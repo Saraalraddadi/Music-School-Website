@@ -1,0 +1,23 @@
+<p *ngIf="error" class="errorMessage">{{error}}</p>
+<div class="form" *ngIf="FormIsAvailable()">
+	<div class="day"
+	*ngFor="let day of dayLessons"
+	[style.visible]="day.length != 0 ? 'visible' : 'hidden'">
+		<div class="card"
+		*ngFor="let lesson of day"
+		(click)="GotoLesson(lesson.id)">
+			<div class="content">
+				<div class="header">
+					<b>{{lesson.first_name}} {{lesson.last_name}}</b>
+				</div>
+				<div class="meta">
+					<p>{{lesson.instrument_type}}</p>
+					<p>{{dayConversion[lesson.lesson_day]}}: {{ConvertToDisplayTime(lesson.start_time)}} - {{ConvertToDisplayTime(lesson.end_time)}}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div *ngIf="!FormIsAvailable()">
+	<p>You must be a student of our school to view this page.</p>
+</div>

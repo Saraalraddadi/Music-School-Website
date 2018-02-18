@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="/register/teacher/">
+  <% include ../shared/header.ejs %>
+  <script>var localPath = '/teacherRegistration/';</script>
+  <script src="/teacherRegistration/teacher.js"></script>
+  <script src="/teacherRegistration/registration.service.js"></script>
+  <script src="/teacherRegistration/registerConfirmation.component.js"></script>
+  <script src="/teacherRegistration/registerForm.component.js"></script>
+  <script src="/teacherRegistration/teacherReg.component.js"></script>
+  <script src="/teacherRegistration/teacherReg.routing.js"></script>
+  <script src="/teacherRegistration/teacherReg.module.js"></script>
+  <script src="/teacherRegistration/teacherReg.main.js"></script>
+</head>
+<body>
+
+  <% include ../shared/nav.ejs %>
+
+  <teacher-registration-app class="mainContainer"></teacher-registration-app>
+</body>
+</html>

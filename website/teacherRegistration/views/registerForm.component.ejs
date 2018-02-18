@@ -1,0 +1,129 @@
+<p *ngIf="error" class="errorMessage">{{error}}</p>
+<form *ngIf="FormIsAvailable()" [hidden]="submitted" (ngSubmit)="Register()" #registrationForm="ngForm" method="POST">
+    <fieldset id="teacherinfo">
+        <legend><span>Personal Information</span></legend>
+        <div class="row">
+        	<div class="col-sm-6">
+        		<label for="firstName">First Name:</label>
+	            <input 	title="Letters and Spaces" type="text" id="firstName" name="firstName" #firstName="ngModel"
+				[(ngModel)]="teacher.firstName" pattern="^[A-Za-z ]+$" required/>
+				<p class="errorMessage" [hidden]="(firstName.valid || firstName.untouched) && isValid.firstName">Invalid input. Must only contain letters.</p>
+        	</div>
+        	<div class="col-sm-6">
+        		<label for="email">Email:</label>
+	            <input 	title="example@example.com" type="email" id="email" name="email" #email="ngModel"
+				[(ngModel)]="teacher.email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required/>
+				<p class="errorMessage" [hidden]="(email.valid || email.untouched) && isValid.email">Invalid input. Must be a valid email format.</p>
+	        </div>
+	    </div>
+	    <div class="row">
+        	<div class="col-sm-6">
+        		<label for="middleName">Middle Name:</label>
+	            <input 	title="Letters and Spaces" type="text" id="middleName" name="middleName" #middleName="ngModel"
+				[(ngModel)]="teacher.middleName" pattern="^[A-Za-z ]*$" />
+				<p class="errorMessage" [hidden]="(middleName.valid || middleName.untouched) && isValid.middleName">Invalid input. Must only contain letters.</p>
+        	</div>
+        	<div class="col-sm-6">
+        		<label for="phoneNumber">Phone:</label>
+	            <input 	title="8 digit home phone or 10 digit mobile" id="phoneNumber" name="phoneNumber" #phoneNumber="ngModel"
+				[(ngModel)]="teacher.phoneNumber" pattern="^\d{8}$|^04\d{8}$" required/>
+				<p class="errorMessage" [hidden]="(phoneNumber.valid || phoneNumber.untouched) && isValid.phoneNumber">Invalid input. Must be a valid mobile or home number (without area codes).</p>
+	        </div>
+	    </div>
+	    <div class="row">
+        	<div class="col-sm-6">
+        		<label for="lastName">Last Name:</label>
+	            <input 	title="Letters and Spaces" type="text" id="lastName" name="lastName" #lastName="ngModel"
+				[(ngModel)]="teacher.lastName" pattern="^[A-Za-z ]+$" required/>
+				<p class="errorMessage" [hidden]="(lastName.valid || lastName.untouched) && isValid.lastName">Invalid input. Must only contain letters.</p>
+        	</div>
+			<div class="col-sm-6">
+				<label 	for="birthday">Date of Birth: </label>
+				<input 	title="dd/mm/yyyy" type="text" id="birthday" class="datepicker" placeholder= "dd/mm/yyyy" name="birthday" #birthday="ngModel" [(ngModel)]="teacher.birthday" 
+						pattern="^([0-2][0-9]|3[0-1])\/(0[1-9]|1[0-2])\/((19|20)[0-9]{2})$" 
+						autocomplete="off" required/>
+				<p class="errorMessage" [hidden]="(birthday.valid || birthday.untouched) && isValid.birthday">Invalid input. Must be a valid date in the format dd/mm/yyyy.</p>
+			</div>
+	    </div>
+		<div class="row">
+        	<div class="col-sm-6">
+        		<label for="gender">Gender:</label>
+	            <select id="gender" name="gender" #gender="ngModel" [(ngModel)]="teacher.gender" pattern="^Male$|^Female$" required>
+						<option value="" disabled selected>Select Gender</option>
+						<option value="Male">Male</option>
+						<option value="Female">Female</option>
+				</select>
+				<p class="errorMessage" [hidden]="(gender.valid || gender.untouched) && isValid.gender">A Value must be selected.</p>
+        	</div>
+	    </div>
+    </fieldset>
+    <fieldset id="professionalinfo"
+    *ngIf="instrumentTypes.length + languagesList.length != 0">
+    	<legend><span>Professional Information</span></legend>
+    	<div class="row" *ngIf="instrumentTypes.length != 0">
+        	<div class="col-sm-6">
+        		<label for="instrumentTypeIds">Instruments</label>
+		    	<select title="Hold Control or Command and click to select multiple"
+		    	id="instrumentTypeIds" name="instrumentTypeIds"
+		    	[(ngModel)]="teacher.instrumentTypeIds"
+		    	(change)="ResetGrades()"
+		    	#instrumentTypeIds="ngModel" multiple required pattern="^([0-9]+,)*[0-9]+$"
+		    	[style.height]="instrumentTypes.length*20 + 5 + 'px'">
+			    	<option *ngFor="let instrument of instrumentTypes" value="{{instrument.id}}">{{instrument.name}}</option>
+		    	</select>
+		    	<p class="errorMessage" [hidden]="(instrumentTypeIds.valid || instrumentTypeIds.untouched) && isValid.instrumentTypeIds">
+		    		At least one instrument must be known.
+		    	</p>
+        	</div>
+        	<div class="col-sm-6">
+        	 	<label>Grades</label>
+	            <div *ngFor="let instrumentTypeId of teacher.instrumentTypeIds">
+	            	{{instrumentTypes[instrumentTypeId - 1].name}}: 
+	            	<input class="gradeInput" type="text" pattern="[4-7]" name="{{instrumentTypes[instrumentTypeId - 1].name}}Grade"
+	            	[(ngModel)]="teacher.instrumentTypeGrades[instrumentTypeId - 1]" required/>
+	            </div>
+	        </div>
+	    </div>
+	    <div class="row" *ngIf="languagesList.length != 0">
+	    	<div class="col-sm-12">
+		    	<label for="languages">Languages</label>
+		    	<select title="Hold Control or Command and click to select multiple"
+		    	id="languages" name="langauges"
+		    	[(ngModel)]="teacher.languages"
+		    	[style.height]="languagesList.length*20 + 5 + 'px'"
+		    	#languages="ngModel" multiple required pattern="^([0-9]+,)*[0-9]+$">
+			    	<option *ngFor="let language of languagesList" value="{{language.id}}">{{language.name}}</option>
+		    	</select>
+		    	<p class="errorMessage" [hidden]="(languages.valid || languages.untouched) && isValid.languages">
+		    		At least one language must be known.
+		    	</p>
+	    	</div>
+	    </div>
+    </fieldset>    
+    <fieldset id="locationinfo">
+        <legend><span>Location Information</span></legend>
+	    <div class="row">
+        	<div class="col-sm-12">
+        		<label for="address">Address:</label>
+	            <input 	type="text" id="address" name="address" #address="ngModel"
+				[(ngModel)]="teacher.address" required/>
+				<p class="errorMessage" [hidden]="(address.valid || address.untouched) && isValid.address">Invalid input. Must be a valid address.</p>
+        	</div>
+	    </div>  
+    </fieldset>
+
+    <fieldset id="additionalinformation">
+        <legend><span>Additional Information</span></legend>
+        <div class="col-sm-12">
+	        <label for="feedback">Please list any instruments you are able to play that were not listed above.</label>
+	        <textarea id="feedback" name="feedback" rows="7" cols="55" [(ngModel)]="teacher.description" ></textarea>
+        </div>
+    </fieldset>
+    <div class="buttonContainer">
+    	<button [disabled]="!registrationForm.form.valid" type="Submit">Submit</button>
+    </div>
+</form>
+<div [hidden]="!submitted">
+	<p>Attempting to Register your new account...</p>
+</div>
+<p *ngIf="!FormIsAvailable()">You do not have access to this page.</p>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="/apply/teacher/">
+  <% include ../shared/header.ejs %>
+  <script>var localPath = '/teacherApplication/';</script>
+  <script src="/teacherApplication/teacherApplication.js"></script>
+  <script src="/teacherApplication/application.service.js"></script>
+  <script src="/teacherApplication/applyConfirmation.component.js"></script>
+  <script src="/teacherApplication/applyForm.component.js"></script>
+  <script src="/teacherApplication/teacherApplication.component.js"></script>
+  <script src="/teacherApplication/teacherApplication.routing.js"></script>
+  <script src="/teacherApplication/teacherApplication.module.js"></script>
+  <script src="/teacherApplication/teacherApplication.main.js"></script>
+</head>
+<body>
+
+  <% include ../shared/nav.ejs %>
+
+  <teacher-application-app class="mainContainer"></teacher-application-app>
+</body>
+</html>

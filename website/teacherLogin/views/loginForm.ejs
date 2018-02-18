@@ -1,0 +1,20 @@
+<div class="mainHeader">
+	{{title}}
+</div>
+<div class="mainBody">
+	<form *ngIf="!loggingIn && !loggedIn" (ngSubmit)="Login()" #loginForm="ngForm" method="POST">
+		<p class="errorMessage" *ngIf="error">{{error}}</p>
+		<div>
+			<label for="email">Email: </label><input type="email" [(ngModel)]="user.email" id="email" name="email"
+			pattern="^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[a-z]{2,3}$" required/>
+		</div>
+		<div>
+			<label for="Password">Password: </label><input type="password" [(ngModel)]="user.password" id="Password" name="Password"
+			pattern="^.{6,}$" required/>
+		</div>
+		<button type="submit"><span class="glyphicon glyphicon-log-in"></span> Log-in</button>
+	</form>
+
+	<div *ngIf="loggingIn">Attempting to Log in</div>
+	<div *ngIf="loggedIn">You are already logged in! Click <a (click)="CheckLoggedIn()">here</a> to check again.</div>
+</div>

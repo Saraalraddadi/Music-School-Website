@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="/student/timetable/">
+  <% include ../shared/header.ejs %>
+  <script>var localPath = '/studentTimetable/';</script>
+  <script src="/studentTimetable/timetable.service.js"></script>
+  <script src="/studentTimetable/lessonInfo.component.js"></script>
+  <script src="/studentTimetable/mainTimetable.component.js"></script>
+  <script src="/studentTimetable/timetable.component.js"></script>
+  <script src="/studentTimetable/timetable.routing.js"></script>
+  <script src="/studentTimetable/timetable.module.js"></script>
+  <script src="/studentTimetable/timetable.main.js"></script>
+</head>
+<body>
+
+  <% include ../shared/nav.ejs %>
+
+  <student-timetable-app class="mainContainer"></student-timetable-app>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="/login/teacher/">
+  <% include ../shared/header.ejs %>
+  <script>var localPath = '/teacherLogin/';</script>
+  <script src="/teacherLogin/login.component.js"></script>
+  <script src="/teacherLogin/loginApp.module.js"></script>
+  <script src="/teacherLogin/loginApp.main.js"></script>
+</head>
+<body>
+
+  <% include ../shared/nav.ejs %>
+
+  <teacher-login-app class="mainContainer"></teacher-login-app>
+</body>
+</html>

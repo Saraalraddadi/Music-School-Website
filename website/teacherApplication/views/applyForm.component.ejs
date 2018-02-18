@@ -1,0 +1,121 @@
+<p *ngIf="error" class="errorMessage">{{error}}</p>
+<form [hidden]="submitted" (ngSubmit)="Apply()" #applicationForm="ngForm" method="POST">
+    <fieldset id="teacherinfo">
+        <legend><span>Contact Information</span></legend>
+        <div class="row">
+        	<div class="col-sm-6">
+        		<label for="firstName">First Name:</label>
+	            <input 	title="Letters and Spaces" type="text" id="firstName" name="firstName" #firstName="ngModel"
+				[(ngModel)]="teacherApplication.firstName" pattern="^[A-Za-z ]+$" required/>
+				<p class="errorMessage" [hidden]="(firstName.valid || firstName.untouched) && isValid.firstName">Invalid input. Must only contain letters.</p>
+        	</div>
+        	<div class="col-sm-6">
+        		<label for="email">Email:</label>
+	            <input 	title="example@example.com" type="email" id="email" name="email" #email="ngModel"
+				[(ngModel)]="teacherApplication.email" pattern="^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,3}$" required/>
+				<p class="errorMessage" [hidden]="(email.valid || email.untouched) && isValid.email">Invalid input. Must be a valid email format.</p>
+	        </div>
+	    </div>
+	    <div class="row">
+        	<div class="col-sm-6">
+        		<label for="middleName">Middle Name:</label>
+	            <input 	title="Letters and Spaces" type="text" id="middleName" name="middleName" #middleName="ngModel"
+				[(ngModel)]="teacherApplication.middleName" pattern="^[A-Za-z ]*$" />
+				<p class="errorMessage" [hidden]="(middleName.valid || middleName.untouched) && isValid.middleName">Invalid input. Must only contain letters.</p>
+        	</div>
+        	<div class="col-sm-6">
+        		<label for="phoneNumber">Phone:</label>
+	            <input 	title="8 digit home phone or 10 digit mobile" id="phoneNumber" name="phoneNumber" #phoneNumber="ngModel"
+				[(ngModel)]="teacherApplication.phoneNumber" pattern="^\d{8}$|^04\d{8}$" required/>
+				<p class="errorMessage" [hidden]="(phoneNumber.valid || phoneNumber.untouched) && isValid.phoneNumber">Invalid input. Must be a valid mobile or home number (without area codes).</p>
+	        </div>
+	    </div>
+	    <div class="row">
+        	<div class="col-sm-6">
+        		<label for="lastName">Last Name:</label>
+	            <input 	title="Letters and Spaces" type="text" id="lastName" name="lastName" #lastName="ngModel"
+				[(ngModel)]="teacherApplication.lastName" pattern="^[A-Za-z ]+$" required/>
+				<p class="errorMessage" [hidden]="(lastName.valid || lastName.untouched) && isValid.lastName">Invalid input. Must only contain letters.</p>
+        	</div>
+			<div class="col-sm-6">
+				<label 	for="birthday">Date of Birth: </label>
+				<input 	title="dd/mm/yyyy" type="text" id="birthday" class="datepicker" placeholder= "dd/mm/yyyy" name="birthday" #birthday="ngModel" [(ngModel)]="teacherApplication.birthday" 
+						pattern="^([0-2][0-9]|3[0-1])\/(0[1-9]|1[0-2])\/((19|20)[0-9]{2})$" 
+						autocomplete="off" required/>
+				<p class="errorMessage" [hidden]="(birthday.valid || birthday.untouched) && isValid.birthday">Invalid input. Must be a valid date in the format dd/mm/yyyy.</p>
+			</div>
+	    </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender"
+                    [(ngModel)]="teacherApplication.gender" #gender="ngModel" required pattern="^[Mm]ale$|^[Ff]emale$">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+                <p class="errorMessage" [hidden]="(gender.valid || gender.untouched) && isValid.gender">Invalid input. Please reselect your choice</p>
+            </div>
+        </div>
+    </fieldset>
+
+    <fieldset id="instrumentsinformation">
+        <legend><span>Instruments You Can Teach</span></legend>
+        <div class="col-sm-12">
+	        <label for="instruments">List all instruments you can teach along with your grade for that instrument:</label>
+	        <textarea id="instruments" name="instruments" rows="7" cols="55" [(ngModel)]="teacherApplication.instruments" #instruments="ngModel" placeholder="format: instrument, grade; instrument, grade;" pattern="^([A-Za-z ]+,[ ]?[0-9];)+$" required></textarea>
+        </div>
+    </fieldset>
+
+    <fieldset id="languagesinformation" *ngIf="languagesList.length != 0">
+        <legend><span>Languages You Can Teach In</span></legend>
+        <div class="col-sm-12">
+            <label for="languages">Select all languages you can comfortably teach in:</label>
+            <select title="Hold Control or Command and click to select multiple" id="languages" name="langauges"
+                [(ngModel)]="teacherApplication.languages" [style.height]="languagesList.length*20 + 5 + 'px'" #languages="ngModel" multiple required pattern="^([0-9]+,)*[0-9]+$">
+                <option *ngFor="let language of languagesList" value="{{language.id}}">{{language.name}}</option>
+            </select>
+            <p class="errorMessage" [hidden]="(languages.valid || languages.untouched) && isValid.languages">At least one language must be selected.</p>
+            <p>To select multiple: Ctrl+Click to select individually, Ctrl+Shift+Click to select a range.</p>
+        </div>
+    </fieldset>
+
+    <fieldset id="coverletterfield">
+        <legend><span>Cover Letter</span></legend>
+        <div class="col-sm-12">
+	        <label for="coverletter">Cover Letter:</label>
+	        <textarea id="coverletter" name="coverletter" rows="7" cols="55" [(ngModel)]="teacherApplication.coverLetter" pattern="^[A-Za-z]([A-Za-z0-9 '?,._%+-]|\n|\r)+$" required></textarea>
+        </div>
+    </fieldset>
+
+    <fieldset id="resumefield">
+        <legend><span>References</span></legend>
+        <div class="col-sm-12">
+	        <label for="reference1name">First Reference:</label>
+            <input title="Letters and Spaces" type="text" id="reference1name" name="reference1name" placeholder="Name" #reference1name="ngModel" [(ngModel)]="teacherApplication.reference1name" pattern="^[A-Za-z ]+$" required/>
+            <input title="Letters and Spaces" type="text" id="reference1number" name="reference1number" placeholder="Number" #reference1number="ngModel" [(ngModel)]="teacherApplication.reference1number" pattern="^\d{8}$|^04\d{8}$" required/>
+
+            <label for="reference2name">Second Reference:</label>
+            <input title="Letters and Spaces" type="text" id="reference2name" name="reference2name" placeholder="Name" #reference2name="ngModel" [(ngModel)]="teacherApplication.reference2name" pattern="^[A-Za-z ]+$" />
+            <input title="Letters and Spaces" type="text" id="reference2number" name="reference2number" placeholder="Number" #reference2number="ngModel" [(ngModel)]="teacherApplication.reference2number" pattern="^\d{8}$|^04\d{8}$" />
+
+            <label for="reference3name">Third Reference:</label>
+            <input title="Letters and Spaces" type="text" id="reference3name" name="reference3name" placeholder="Name" #reference3name="ngModel" [(ngModel)]="teacherApplication.reference3name" pattern="^[A-Za-z ]+$" />
+            <input title="Letters and Spaces" type="text" id="reference3number" name="reference3number" placeholder="Number" #reference3number="ngModel" [(ngModel)]="teacherApplication.reference3number" pattern="^\d{8}$|^04\d{8}$" />
+        </div>
+    </fieldset>
+
+    <fieldset id="resumefield">
+        <legend><span>Number of Hours</span></legend>
+        <div class="col-sm-12">
+            <label for="hours">How many hours a week are you looking to work?</label>
+            <input title="Letters and Spaces" type="text" id="hours" name="hours" #hours="ngModel" [(ngModel)]="teacherApplication.hours" pattern="^[0-9]+$" required/>
+        </div>
+    </fieldset>
+
+    <div class="buttonContainer">
+    	<button [disabled]="!applicationForm.form.valid" type="Submit">Submit</button>
+    </div>
+</form>
+<div [hidden]="!submitted">
+	<p>Attempting to submit your Application...</p>
+</div>
