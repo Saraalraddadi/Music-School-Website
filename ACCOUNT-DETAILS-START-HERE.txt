@@ -1,0 +1,12 @@
+Start by creating 2 accounts for yourself: A Teacher account and a Student account.
+
+When registering, its important to use a valid email, as the passwords for teachers and managers are emailed to them.
+These passwords can then be changed through “My-portal”, the link at the top.
+
+To register a new manager or teacher, a manager account needs to be used.
+an existing one is:
+
+User: richard@gmail.com
+Pass: richard
+
+The link to the host site is: data55.heroku.com
