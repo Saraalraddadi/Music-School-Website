@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="/management/teachers/">
+  <% include ../shared/header.ejs %>
+  <script>var localPath = '/deactivateTeachers/';</script>
+  <script src="/deactivateTeachers/deactivateTeachers.service.js"></script>
+  <script src="/deactivateTeachers/viewIndividualTeacher.component.js"></script>
+  <script src="/deactivateTeachers/viewAllTeachers.component.js"></script>
+  <script src="/deactivateTeachers/deactivateTeachers.component.js"></script>
+  <script src="/deactivateTeachers/deactivateTeachers.routing.js"></script>
+  <script src="/deactivateTeachers/deactivateTeachers.module.js"></script>
+  <script src="/deactivateTeachers/deactivateTeachers.main.js"></script>
+</head>
+<body>
+
+  <% include ../shared/nav.ejs %>
+
+  <deactivate-teachers-app class="mainContainer"></deactivate-teachers-app>
+</body>
+</html>

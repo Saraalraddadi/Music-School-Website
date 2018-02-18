@@ -1,0 +1,31 @@
+<div *ngIf="PageIsAvailable()">
+	<div class="card bigCard">
+		<div class="content">
+			<div class="header">
+				{{instrument.firstname}} {{instrument.lastname}}
+			</div>
+			<div class="meta">
+				<div class="cardRowContainer"><div class="cardLeft">Student Phone:</div> <div class="cardRight">{{instrument.phone}}</div></div>
+				<div class="cardRowContainer"><div class="cardLeft">Student Email:</div> <div class="cardRight">{{instrument.email}}</div></div>
+				<div class="cardRowContainer"><div class="cardLeft">Instrument Model:</div> <div class="cardRight">{{instrument.instrumentname}}</div></div>
+				<div class="cardRowContainer"><div class="cardLeft">Instrument Type:</div> <div class="cardRight">{{instrument.instrumenttype}}</div></div>
+				<div class="cardRowContainer"><div class="cardLeft">Serial Number:</div> <div class="cardRight">{{instrument.serialnumber}}</div></div>
+				<div class="cardRowContainer"><div class="cardLeft">Condition:</div> <div class="cardRight">{{instrument.condition}}</div></div>
+				<div class="cardRowContainer"><div class="cardLeft">Purchase Date:</div> <div class="cardRight">{{instrument.purchasedate}}</div></div>
+				<div class="cardRowContainer"><div class="cardLeft">Purchase Price:</div> <div class="cardRight">{{instrument.purchaseprice}}</div></div>
+				<div class="cardRowContainer"><div class="cardLeft">Hire Fee:</div> <div class="cardRight">{{instrument.hirefee}}</div></div>
+				<div class="cardRowContainer"><div class="cardLeft">Notes:</div> <div class="cardRight">{{instrument.notes}}</div></div>
+			</div>
+			<div class="extra content">
+	    		<div class="ui two buttons">
+					<button class="button21 clickable positive" (click)="AcceptInstrumentHireRequest(instrument.hireid)">Accept Hire Request</button>
+					<button class="button21 clickable" (click)="RejectInstrumentHireRequest(instrument.hireid)">Decline Hire Request</button>
+				    <button class="button22 clickable" (click)="GoBack()">Go Back</button>
+				</div>
+	    	</div>
+	    	<p *ngIf="error" class="errorMessage">{{error}}</p>
+		</div>
+	</div>
+</div>
+
+<p *ngIf="!PageIsAvailable()">You do not have access to this page.</p>

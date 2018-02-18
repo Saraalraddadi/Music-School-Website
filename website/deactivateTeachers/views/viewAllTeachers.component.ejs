@@ -1,0 +1,36 @@
+<p *ngIf="error" class="tableErrorMessage">{{error}}</p>
+
+<div class="content" *ngIf="FormIsAvailable()">
+
+  <div class="flexsearch">
+		<div class="flexsearch--wrapper">
+			<div class="flexsearch--input-wrapper">
+			 <input name="search" type="text" id="myInput" [(ngModel)]="filterText" (keyup)="Filter()" placeholder="Search for names.." title="Type in a name">
+			</div>
+		</div>
+  </div>
+      
+          
+    <table class="table-hover" data-role="table" data-mode=" columntoggle" id="myTable" data-filter="true" data-input="#filterTable-input">
+    
+      <thead>
+        <th class="left aligned">Name</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Date Employed</th>
+      </thead>
+        <tr *ngFor="let teacher of filteredTeachers" (click)="SelectTeacher(teacher.id)">
+          <td class="left aligned">{{teacher.firstname}} {{teacher.lastname}}</td>
+          <td>{{teacher.phone}}</td>
+          <td>{{teacher.email}}</td>
+          <td>{{teacher.dateemployed}}</td>
+        </tr>
+    </table>
+
+    <button (click)="GetDeactivatedTeachers()" *ngIf="!showingDeactivatedTeachers" type="button">Show Deactivated Teachers</button>
+    <button (click)="GetTeachers()" *ngIf="showingDeactivatedTeachers" type="button">Hide Deactivated Teachers</button>
+
+</div>
+
+<p *ngIf="!FormIsAvailable()">You do not have access to this page.</p>
+  

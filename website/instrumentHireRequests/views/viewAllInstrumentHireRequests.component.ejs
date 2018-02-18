@@ -1,0 +1,32 @@
+<div *ngIf="PageIsAvailable()">
+
+<div class="content">
+  <div class="flexsearch">
+		<div class="flexsearch--wrapper">
+			<div class="flexsearch--input-wrapper">
+        <input name="search" type="text" id="myInput" [(ngModel)]="filterText" (keyup)="Filter()" placeholder="Search for names.." title="Type in a name">
+      </div>
+    </div>
+  </div>
+         
+  <table id="myTable"> 
+    <thead>
+      <th>Student Name</th>
+      <th>Instrument Model</th>
+      <th>Instrument Type</th>
+      <th>Hire Date</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let instrument of filteredInstrumentRequests" (click)="SelectInstrumentHireRequest(instrument.hireid)">
+        <td>{{instrument.firstname}} {{instrument.lastname}}</td>
+        <td>{{instrument.instrumentname}}</td>
+        <td>{{instrument.instrumenttype}}</td>
+        <td>{{instrument.hiredate}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <p *ngIf="error" class="tableErrorMessage">{{error}}</p>
+</div>
+</div>
+
+<p *ngIf="!PageIsAvailable()">You do not have access to this page.</p>

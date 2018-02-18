@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="/lessons/application/">
+  <% include ../shared/header.ejs %>
+  <script>var localPath = '/lessonApplication/';</script>
+  <script src="/lessonApplication/lesson.js"></script>
+  
+  <script src="/lessonApplication/lessonApp.service.js"></script>
+  <script src="/lessonApplication/lessonConfirmation.component.js"></script>
+  <script src="/lessonApplication/applicationForm.component.js"></script>
+  <script src="/lessonApplication/lessonApp.component.js"></script>
+  <script src="/lessonApplication/lessonApp.routing.js"></script>
+  <script src="/lessonApplication/lessonApp.module.js"></script>
+  <script src="/lessonApplication/lessonApp.main.js"></script>
+</head>
+<body>
+
+  <% include ../shared/nav.ejs %>
+
+  <lesson-registration-app class="mainContainer"></lesson-registration-app>
+</body>
+</html>

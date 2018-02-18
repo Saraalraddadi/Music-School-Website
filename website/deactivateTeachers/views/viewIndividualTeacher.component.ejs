@@ -1,0 +1,30 @@
+<div *ngIf="FormIsAvailable()">
+
+	<div class="ui card bigCard"
+	*ngIf="teacher">
+		<div class="content">
+			<div class="cardHeader">
+				{{teacher.firstname}} {{teacher.lastname}}
+			</div>
+			<div class="meta">
+				<div class="cardRowContainer"><div class="cardLeft">DOB:</div> <div class="cardRight">{{teacher.dob}}</div></div>
+				<div class="cardRowContainer"><div class="cardLeft">Address:</div> <div class="cardRight">{{teacher.address}}</div></div>
+				<div class="cardRowContainer"><div class="cardLeft">Phone:</div> <div class="cardRight">{{teacher.phone}}</div></div>
+				<div class="cardRowContainer"><div class="cardLeft">Email:</div> <div class="cardRight">{{teacher.email}}</div></div>
+				<div class="cardRowContainer"><div class="cardLeft">Date Employed:</div> <div class="cardRight">{{teacher.dateemployed}}</div></div>
+				<div class="cardRowContainer"><div class="cardLeft">Description:</div> <div class="cardRight">{{teacher.description}}</div></div>
+			</div>
+		</div>
+		<div class="extra content">
+    		<div class="ui two buttons">
+			    <button class="button22 clickable" (click)="GoBack()">Go Back</button>
+				<button class="button21 clickable" (click)="DeactivateTeacher(teacher.id)" *ngIf="!teacher.deactived">Deactivate</button>
+				<button class="button21 clickable positive" (click)="ReactivateTeacher(teacher.id)" *ngIf="teacher.deactived">Reactivate</button>
+			</div>
+    	</div>
+	</div>
+	<div *ngIf="!teacher">Loading...</div>
+
+</div>
+
+<p *ngIf="!FormIsAvailable()">You do not have access to this page.</p>

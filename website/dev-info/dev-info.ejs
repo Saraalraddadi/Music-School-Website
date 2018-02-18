@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <% include ../shared/header.ejs %>
+</head>
+
+<body>
+
+  <% include ../shared/nav.ejs %>
+
+<div class="jumbotron text-center">
+  <div class="container">
+    <h1>Data55 Developer Information</h1>
+  </div>
+</div>
+<div class="container">
+  <div class="col-sm-6">
+  <h3>Setting up a local Environment</h3>
+    <p>
+      <ol>
+        <li>Download and install <a href="https://nodejs.org/en/">Node.js</a> (I recommend the LTS version)</li>
+        <li>Download and install <a href="https://desktop.github.com/">GitHub Desktop</a> and link to your account</li>
+        <li>Clone the repository into your local GitHub Desktop</li>
+        <li>Navigate to another branch (not master)</li>
+        <li>Using command-line, navigate to the same location as the index.js file</li>
+        <li>run the following commands to download the required files</li>
+        <li> <code>npm install express --save</code></li>
+        <li> <code>npm install ejs --save</code></li>
+        <li>Now run <code>node index.js</code> to start the server</li>
+        <li>To view the local server, navigate to <a href="http://127.0.0.1:5000">http://127.0.0.1:5000</a> in a browser</li>
+      </ol>
+    </p>
+  </div>
+  <div class="col-sm-6 text-center">
+    <h3><span class="glyphicon glyphicon-link"></span> Helpful Links</h3>
+      <ul>
+        <li><a href="https://www.heroku.com/home">Heroku</a></li>
+        <li><a href="https://angularjs.org/">AngularJS</a></li>
+        <li><a href="https://nodejs.org/en/">NodeJs</a></li>
+        <li><a href="https://www.postgresql.org/">PostgreSQL</a></li>
+        <li><a href="https://github.com/IFB299Data55/music-school-dev/">Source on Github</a></li>
+      </ul>
+  </div>
+</div>
+
+
+</body>
+</html>

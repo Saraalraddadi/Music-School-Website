@@ -1,0 +1,13 @@
+<p *ngIf="error" class="cardErrorMessage">{{error}}</p>
+
+<button class="button22 special" (click)="GoBack()">Go Back</button>
+
+<div *ngIf="report && FormIsAvailable()">
+  <table id="myTable">
+  	<tr class="header"><th colspan="2">{{reportDisplayName}}</th></tr>
+    <tr *ngFor="let row of reportRows"><td>{{row.rowHeading}}</td><td>{{report[row.dataKey]}}</td></tr>
+  </table>
+</div>
+<div *ngIf="!FormIsAvailable()">
+  You do not have access to view this page.
+</div>

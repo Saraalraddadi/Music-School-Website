@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="/management/instrument/requests/">
+  <% include ../shared/header.ejs %>
+  <script>var localPath = '/instrumentHireRequests/';</script>
+  <script src="/instrumentHireRequests/instrumentHireRequests.service.js"></script>
+  <script src="/instrumentHireRequests/viewIndividualInstrumentHireRequest.component.js"></script>
+  <script src="/instrumentHireRequests/viewAllInstrumentHireRequests.component.js"></script>
+  <script src="/instrumentHireRequests/instrumentHireRequests.component.js"></script>
+  <script src="/instrumentHireRequests/instrumentHireRequests.routing.js"></script>
+  <script src="/instrumentHireRequests/instrumentHireRequests.module.js"></script>
+  <script src="/instrumentHireRequests/instrumentHireRequests.main.js"></script>
+</head>
+<body>
+
+  <% include ../shared/nav.ejs %>
+
+  <instrument-hire-requests-app class="mainContainer"></instrument-hire-requests-app>
+</body>
+</html>

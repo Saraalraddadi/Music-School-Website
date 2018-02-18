@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="/management/reports/">
+  <% include ../shared/header.ejs %>
+  <script>var localPath = '/generateReports/';</script>
+  <script src="/generateReports/generateReports.service.js"></script>
+  <script src="/generateReports/instrumentSummaryReport.component.js"></script>
+  <script src="/generateReports/lessonSummaryReport.component.js"></script>
+  <script src="/generateReports/viewAllReports.component.js"></script>
+  <script src="/generateReports/generateReports.component.js"></script>
+  <script src="/generateReports/generateReports.routing.js"></script>
+  <script src="/generateReports/generateReports.module.js"></script>
+  <script src="/generateReports/generateReports.main.js"></script>
+</head>
+<body>
+
+  <% include ../shared/nav.ejs %>
+
+  <generate-reports-app class="mainContainer"></generate-reports-app>
+</body>
+</html>
