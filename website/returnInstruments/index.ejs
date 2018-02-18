@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="/management/instrument/return/">
+  <% include ../shared/header.ejs %>
+  <script>var localPath = '/returnInstruments/';</script>
+  <script src="/returnInstruments/returnInstruments.service.js"></script>
+  <script src="/returnInstruments/viewIndividualInstrument.component.js"></script>
+  <script src="/returnInstruments/viewAllInstruments.component.js"></script>
+  <script src="/returnInstruments/returnInstruments.component.js"></script>
+  <script src="/returnInstruments/returnInstruments.routing.js"></script>
+  <script src="/returnInstruments/returnInstruments.module.js"></script>
+  <script src="/returnInstruments/returnInstruments.main.js"></script>
+</head>
+<body>
+
+  <% include ../shared/nav.ejs %>
+
+  <return-instruments-app class="mainContainer"></return-instruments-app>
+</body>
+</html>

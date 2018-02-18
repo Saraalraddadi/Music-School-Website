@@ -1,0 +1,148 @@
+/* Form stylesheet*/
+
+form {
+  width: 60%;
+  margin: auto;
+}
+
+form .row {
+    margin-bottom: 10px;
+}
+
+form fieldset {
+    margin-bottom: 30px;
+}
+
+form fieldset div {
+    display: block;
+}
+
+form label {
+    display: block;
+    font-weight: bold;
+}
+
+form input {
+    width: 100%;
+    border: 1px solid rgb(100,100,100);
+    padding: 5px 10px 5px 10px;
+    border-radius: 25px;
+}
+
+form select {
+    width: 100%;
+    border: 1px solid rgb(100,100,100);
+    padding: 5px 10px 5px 10px;
+    border-radius: 25px;
+}
+
+form input:focus, form textarea:focus, form select:focus {
+    background: white;
+    resize: none;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+form input:required, form textarea:required {
+    box-shadow:none;
+}
+
+table {
+    border: 1px solid rgb(200,200,200);
+    margin: auto;
+}
+
+table tr:first-child {
+    border-bottom: 1px solid rgb(200,200,200);
+}
+
+table thead {
+  background: rgb(240,240,240);
+}
+
+table th, table td {
+    padding: 10px;
+    text-align: center;
+}
+
+.selectableRow:hover {
+    cursor: pointer;
+}
+
+.selectedRow {
+    background: rgba(220,240,220,0.8);
+}
+
+form textarea {
+    width: 100%;
+    font-size: 15px;
+    border-radius: 25px;
+    padding: 0px 20px 0px 20px;
+}
+
+.errorMessage {
+    color: rgb(200,0,0);
+}
+
+.buttonContainer {
+  margin-top: 30px;
+  text-align: center;
+  padding-right: 6%;
+}
+
+form button {
+  margin-top: 20px;
+  border-radius: 0.5rem;
+  border: none;
+  box-shadow: 0px 0px 0px 1px rgb(50,150,50) inset !important;
+  color: rgb(50,150,50);
+  background: #FFF;
+  font-size: 17px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 25px;
+  padding-left: 25px;
+  line-height: 1em;
+  font-weight: bold;
+}
+
+form button:hover {
+  background: rgb(30,130,30);
+  color: #FFF;
+}
+
+form button[disabled] {
+    opacity: 0.6;
+    background: white;
+    color: rgb(225,0,0);
+    border: none;
+    box-shadow: 0px 0px 0px 1px #DB2828 inset !important;
+    font-size: 17px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 25px;
+    padding-left: 25px;
+    line-height: 1em;
+    border-radius: 0.5rem;
+}
+
+.ng-valid, .validTable {
+    border-left: 2px solid rgb(70,200,70);
+}
+
+.ng-invalid, .invalidTable {
+    border-left: 2px solid rgb(225,0,0);
+}
+
+@media screen and (min-width: 1200px) {
+  form {
+    width: 600px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  form {
+    width: 100%;
+  }
+}

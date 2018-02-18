@@ -1,0 +1,110 @@
+.tableErrorMessage {
+  width: 80%;
+  margin: auto;
+  color: rgb(200,0,0);
+}
+
+.content {
+  width: 100%;
+}
+
+/*.flexsearch--wrapper {
+  height: auto;
+  width: auto;
+  background: transparent;
+  position: static;
+}*/
+  
+/*.flexsearch--form {
+  overflow: hidden;
+  position: relative;
+}*/
+  
+.flexsearch--input-wrapper {
+  padding: 0 28px 8px 0; 
+}
+
+#myInput {
+  width: 100%;
+}
+
+.flexsearch {
+  width: 80%;
+  margin-left: 10%;
+}
+
+#myInput {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 40px;
+  padding-left: 20px;
+  border-color: #888;
+  border-radius: 35px; 
+  border-style: solid;
+  border-width: 2px;
+  margin-top: 15px;
+  color: #333;
+  font-family: 'Helvetica', sans-serif;
+  font-size: 18px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+  
+#myInput:focus {
+  outline: none;
+  border-color: #333;
+}
+
+#myInput:focus.flexsearch--submit {
+  color: #333; 
+}
+
+.flexsearch--submit:hover {
+  color: #333;
+  cursor: pointer;
+}
+
+::-webkit-input-placeholder {
+  color: #888;  
+}
+
+#myInput:-moz-placeholder {
+  color: #888
+}
+
+#myTable {
+  width: 80%;
+  border: 1px solid rgba(34, 36, 38, 0.15);
+  text-align: left;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+#myTable:first-child {
+  margin-top: 0em;
+}
+#myTable:last-child {
+  margin-bottom: 30px;
+}
+
+#myTable thead {
+  border: 1px solid rgba(34, 36, 38, 0.15);
+  background: #F9FAFB;
+}
+
+#myTable thead th {
+  text-align: inherit;
+  color: rgba(0, 0, 0, 0.87);
+  padding: 10px;
+  font-size: 1.2em;
+}
+
+#myTable tr {
+  cursor: pointer;
+  border-top: 1px solid rgba(34, 36, 38, 0.15);
+}
+
+#myTable td {
+  padding: 10px;
+  text-align: inherit;
+}

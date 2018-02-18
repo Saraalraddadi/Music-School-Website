@@ -1,0 +1,106 @@
+body, nav {
+    background: rgb(220,220,220) !important;
+}
+.mainContainer {
+    display: block;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    border: 1px solid rgb(200,200,200);
+    border-radius: 10px;
+    background: white;
+}
+
+.mainHeader {
+    height: 75px;
+    padding-left: 10px;
+    border-bottom: 1px solid rgb(200,200,200);
+    border-radius: 10px 10px 0px 0px;
+    font-size: 32px;
+    line-height: 75px;
+    background: rgb(240,240,240);
+}
+
+.mainBody {
+    padding: 25px;
+}
+
+#firstHeader {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    background: #191970;
+    border-bottom:1px solid #EEE;
+}
+
+#firstHeader .navbar-header {
+    height: 150px;
+    padding: 10px;
+    margin-left: 10px;
+}
+
+#firstHeader .navbar-header img {
+    height: 100%;
+}
+
+#firstHeader a, #firstHeader button {
+    color: white;
+    text-align: center;
+}
+
+#secondHeader {
+    margin-top: 20px;
+    background: rgb(240,240,240);
+    border: solid 1px rgb(200,200,200);
+    padding-left: 140px;
+}
+
+#secondHeader a:hover,
+#secondHeader .dropdown-menu a:hover {
+    background: rgb(220,220,220);
+}
+
+#secondHeader a {
+    color: rgb(80,80,80);
+    font-size: 14px;
+    height: 30px;
+    padding: 0px 25px 0px 25px;
+    line-height: 30px;
+    text-align: center;
+}
+
+#secondHeader .dropdown-toggle,
+#secondHeader .dropdown-menu {
+    background: rgb(240,240,240);
+
+}
+
+#userDetails button {
+    margin: 10px;
+    /*background: rgb(212, 46, 10);*/
+    background: #191970;
+    color: #FFF;
+    box-shadow: 0px 0px 0px 1px #FFF inset !important;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 5px;
+}
+
+#userDetails button:hover {
+    background: #FFF;
+    color: #191970;
+}
+
+@media screen and (max-width: 767px) {
+    #firstHeader .navbar-header {
+        height: 150px;
+        padding: 10px;
+        padding-left: 10%;
+        margin-left: 0px;
+        text-align: center;
+    }
+    #secondHeader {
+        padding-left: 0px;
+    }
+}

@@ -1,0 +1,114 @@
+<div id="firstHeader" class="container-fluid">
+	<div class="navbar-header">
+		<a href="/"><img src="/shared/img/logo.png" alt="SCHOOL OF MUSIC"/></a>
+	</div>
+		<div id="userDetails" class='nav navbar-nav navbar-right' *ngIf="loggedIn">
+			<li><a href="/myportal/"><span class="glyphicon glyphicon-user"></span> My.Portal</a></li>
+			<li><a href="#">Hello {{user.displayName}}</a></li>
+			<li><button (click)="LogOut()">Log out</button></li>
+		</div>
+	</div>
+	<div id="secondHeader" class="container-fluid">
+	<ul class="nav navbar-nav">
+		<li><a href="/">
+			<i class="fa fa-home"></i> Home
+		</a></li>
+		<li class="dropdown">
+			<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+				<i class="fa fa-bars"></i> About<span class="caret"></span>
+			</a>
+			<ul class="dropdown-menu">
+				<li><a href="/aboutUs/">
+					About Us
+				</a></li>
+				<li><a href="/ourPeople/">
+					Our People
+				</a></li>
+			</ul>
+		</li>
+		<li class="dropdown">
+			<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+				<i class="fa fa-user"></i> Students<span class="caret"></span>
+			</a>
+			<ul class="dropdown-menu">
+				<li *ngIf="!loggedIn"><a href="/login/student/">
+					Login
+				</a></li>
+				<li *ngIf="!loggedIn"><a href="/register/student/">
+					Register
+				</a></li>
+				<li><a href="/information/">
+					Lesson Information
+				</a></li>
+				<li *ngIf="user.type == 'student'"><a href="/lessons/application/">
+					Apply For Lessons
+				</a></li>
+				<li *ngIf="user.type == 'student'"><a href="/student/timetable/">
+					View Timetable
+				</a></li>
+				<li *ngIf="user.type == 'student'"><a href="/student/instruments/borrowed/">
+					View Borrowed Instruments
+				</a></li>
+			</ul>
+		</li>
+	  	<li class="dropdown" *ngIf="!(user.type == 'student')">
+			<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+				<i class="fa fa-user"></i> Teachers<span class="caret"></span>
+			</a>
+		    <ul class="dropdown-menu">
+		    	<li *ngIf="!loggedIn"><a href="/login/teacher/">
+					Login
+				</a></li>
+				<li *ngIf="!loggedIn"><a href="/apply/teacher/">
+					Apply For Job
+				</a></li>
+				<li *ngIf="user.type == 'teacher'"><a href="/teacher/timetable/">
+					View Timetable
+				</a></li>
+				<li *ngIf="user.type == 'manager'"><a href="/register/teacher/">
+					Register
+				</a></li>
+				<li *ngIf="user.type == 'teacher'"><a href="/teacher/studentApplications/">
+					View Student Applications
+				</a></li>
+		    </ul>
+	  	</li>
+		<li class="dropdown" *ngIf="!(user.type == 'teacher' || user.type == 'student')">
+			<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+				<i class="fa fa-sign-in"></i> Management<span class="caret"></span>
+			</a>
+			<ul class="dropdown-menu">
+				<li *ngIf="!loggedIn"><a href="/login/manager/">
+					Login
+				</a></li>
+				<li *ngIf="user.type == 'manager'"><a href="/register/manager/">
+					Register
+				</a></li>
+				<li *ngIf="user.type == 'manager'"><a href="/management/instruments/">
+					View Instruments
+				</a></li>
+				<li *ngIf="user.type == 'manager'"><a href="/management/instrument/new/">
+					Add New Instrument
+				</a></li>
+				<li *ngIf="user.type == 'manager'"><a href="/management/instrument/return/">
+					Return Hired Instruments
+				</a></li>
+				<li *ngIf="user.type == 'manager'"><a href="/management/instrument/requests/">
+					View Instrument Hire Requests
+				</a></li>
+				<li *ngIf="user.type == 'manager'"><a href="/management/teachers/">
+		        	View Teacher Accounts
+		        </a></li>
+		        <li *ngIf="user.type == 'manager'"><a href="/management/teacherApplications/">
+		        	View Teacher Applications
+		        </a></li>
+		        <li *ngIf="user.type == 'manager'"><a href="/management/reports/">
+		        	Reporting
+		        </a></li>
+			</ul>
+		</li>
+	  <li><a href="/contactUs/">
+	    Contact Us
+	  </a></li>
+	</ul>
+</div>

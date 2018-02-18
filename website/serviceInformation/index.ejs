@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <% include ../shared/header.ejs %>
+  <script>var localPath = '/serviceInformation/';</script>
+  <script src="/serviceInformation/instruments.service.js"></script>
+  <script src="/serviceInformation/lessonInfo.component.js"></script>
+  <script src="/serviceInformation/lessonInfo.module.js"></script>
+  <script src="/serviceInformation/lessonInfo.main.js"></script>
+</head>
+
+<body>
+
+  <% include ../shared/nav.ejs %>
+
+  <lesson-info-app class="mainContainer"></lesson-info-app>
+</body>
+</html>

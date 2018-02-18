@@ -1,0 +1,31 @@
+<div class="mainHeader">
+	{{title}}
+</div>
+
+<div class="mainBody">
+	<p *ngIf="error">{{error}}</p>
+	<p>
+		We here at The School of Music cater to people of all skill levels and ages. Whether you’re a beginner or an experienced musician we would love to have you here at The School of Music.
+	</p>
+	<p>
+		For your first month at The School of Music one-on-one lessons will be held weekly for the duration of an hour. Once you and your music teacher are comfortable together we can offer you up to 3 lessons a week (dependent on teacher availability).
+	</p>
+	<h3>Instruments & Lesson Fees:</h3>
+	<p>
+		We can also cater to those wishing to play ethnic instruments, please make an inquiry with the music school for more information.
+	</p>
+	<table id="myTable">
+	<thead>
+		  <th>Instrument</th>
+		  <th>Fee</th>
+	</thead>
+	<tr *ngFor="let instrument of instruments">
+		  <td>{{instrument.name}}</td>
+		  <td>${{instrument.fee}}</td>
+	</tr>
+	</table>
+	<h3>Teachers:</h3>
+	<p>
+	  Our teachers are here to lead you on your path to musical mastery, this is why we allow you to choose whichever teacher you believe is best suited to you. Pinelands allow you to express interest in teachers based on their ethnicity, language skills and experience so you can feel comfortable knowing you’re being taught by someone who best understands you.
+	</p>
+</div>
