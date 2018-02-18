@@ -1,0 +1,39 @@
+/*--------------
+      Card
+---------------*/
+.form {
+  display: inline-block;
+  width: 100%;
+}
+
+.day .card {
+  width: 100%;
+  font-size: 12px;
+  cursor: pointer;
+  margin-left: 0;
+}
+
+.day .card:hover {
+  background: rgb(250,250,250);
+}
+
+.day { 
+  float: left;
+  margin: 0;
+  padding: 0;
+  width: 20%;
+}
+
+
+.card .content .header {
+	text-align: center;
+	font-size: 14px;
+}
+
+@media screen and (max-width: 767px) {
+  .day {
+    float: none;
+    clear: both;
+    width: 100%;
+  }
+}

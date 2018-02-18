@@ -1,0 +1,81 @@
+<div *ngIf="FormIsAvailable()">
+
+	<div class="ui card bigCard"
+	*ngIf="instrumentForm.instrument.id != 0">
+		<div class="content">
+			<div class="cardHeader">
+				{{instrumentForm.instrument.model}}
+			</div>
+			<div class="meta">
+				<p class="errorMessage" *ngIf="editing && error">{{error}}</p>
+				<div class="cardRowContainer"><div class="cardLeft">Instrument Type:</div> 
+				<input name="inst_type" 
+				class="cardRight" 
+				value="{{instrumentForm.instrument.inst_type}}"
+				readonly/></div>
+				<div class="cardRowContainer"><div class="cardLeft">Model:</div> 
+				<input name="model" 
+				[(ngModel)]="instrumentForm.instrument.model"
+				#model="ngModel" class="cardRight" 
+				value="${{instrumentForm.instrument.model}}"
+				[readonly]="!editing"/></div>
+				<div class="cardRowContainer"><div class="cardLeft">Purchase Date:</div> 
+				<input name="purchase_date" 
+				[(ngModel)]="instrumentForm.instrument.purchase_date"
+				#purchase_date="ngModel" class="cardRight" 
+				value="{{instrumentForm.instrument.purchase_date}}"
+				pattern="^[0-9]{2}\/[0-9]{2}\/[0-9]{4}$"
+				[readonly]="!editing"/></div>
+				<div class="cardRowContainer"><div class="cardLeft">Purchase Price:</div> 
+				<input name="purchase_price" 
+				[(ngModel)]="instrumentForm.instrument.purchase_price"
+				#purchase_price="ngModel" class="cardRight" 
+				value="${{instrumentForm.instrument.purchase_price}}"
+				[readonly]="!editing"/></div>
+				<div class="cardRowContainer"><div class="cardLeft">Condition:</div> 
+				<select name="condition_id" 
+				[(ngModel)]="instrumentForm.instrument.condition_id"
+				#condition_id="ngModel" class="cardRight" 
+				value="{{instrumentForm.instrument.condition_id}}"
+				pattern="^[1-9][0-9]*$"
+				[disabled]="!editing">
+				<option *ngFor="let condition of conditions" value="{{condition.id}}">{{condition.condition}}</option>
+				</select>
+				<div class="cardRowContainer"><div class="cardLeft">Hire Fee:</div> 
+				<input name="hire_fee" 
+				[(ngModel)]="instrumentForm.instrument.hire_fee"
+				#hire_fee="ngModel" class="cardRight" 
+				value="{{instrumentForm.instrument.hire_fee}}"
+				pattern="^[1-9][0-9]*(\.[0-9]{1,2})?$"
+				[readonly]="!editing"/></div>
+				<div class="cardRowContainer"><div class="cardLeft">Serial Number:</div> 
+				<input name="serial_no" 
+				[(ngModel)]="instrumentForm.instrument.serial_no"
+				#serial_no="ngModel" class="cardRight" 
+				value="{{instrumentForm.instrument.serial_no}}"
+				pattern="^[A-Za-z0-9]+$"
+				[readonly]="!editing"/></div>
+				<div class="cardRowContainer"><div class="cardLeft">Notes:</div> 
+				<input name="inst_notes" 
+				[(ngModel)]="instrumentForm.instrument.inst_notes"
+				#inst_notes="ngModel" class="cardRight" 
+				value="{{instrumentForm.instrument.inst_notes}}"
+				pattern="^([A-Za-z0-9._%+-]|\s)*$"
+				[readonly]="!editing"/></div>
+			</div>
+		</div>
+		<div class="extra content">
+    		<div class="ui two buttons">
+			    <button class="button22 clickable" (click)="GoBack()">Go Back</button>
+				<button *ngIf="!editing" class="button22 clickable" (click)="EnterEditMode()">Edit</button>
+				<button class="button21 clickable" (click)="DeleteInstrument()">Mark as Sold or Disposed</button>
+				<button *ngIf="editing" class="button21 clickable" (click)="CancelEditing()">Cancel</button>
+				<button *ngIf="editing" class="button21 clickable positive" (click)="SaveChanges()">Save</button>
+			</div>
+    	</div>
+	</div>
+	<div *ngIf="instrumentForm.instrument.id == 0">Loading...</div>
+
+</div>
+
+<p *ngIf="!FormIsAvailable()">You do not have access to this page.</p>

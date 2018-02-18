@@ -1,0 +1,29 @@
+.rejected {
+	background-color: rgb(119,7,7);
+	color: white;
+}
+
+.rejected:hover {
+	background: rgb(104,5,5) !important;
+	color: white;
+}
+
+.shortlisted {
+	background-color: rgb(25,25,112);
+	color: white;
+}
+
+.shortlisted:hover {
+	background: rgb(20,20,95) !important;
+	color: white;
+}
+
+.button21-shrink{
+  margin: 0px 2% 0px 23%;
+  width: 24%;
+}
+
+.button22-shrink {
+  margin: 0px 2% 10px 2%;
+  width: 24%;
+}

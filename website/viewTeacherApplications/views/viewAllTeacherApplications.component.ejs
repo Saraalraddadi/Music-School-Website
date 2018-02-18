@@ -1,0 +1,47 @@
+<p *ngIf="error" class="tableErrorMessage">{{error}}</p>
+
+
+
+<div class="content" *ngIf="FormIsAvailable()">
+
+  <div class="flexsearch">
+    <div class="flexsearch--wrapper">
+      <div class="flexsearch--input-wrapper">
+       <input name="search" type="text" id="myInput" [(ngModel)]="filterText" (keyup)="Filter()" placeholder="Search by name, language or instrument." title="Type in a name, language or instrument">
+       <label for="myInput">Can search for a combination of criteria. For example: 'Violin, Piano, English' will match any application that has all 3</label>
+      </div>
+    </div>
+  </div>
+      
+	    <button class="button21-shrink button21"(click)="ShowDeletedApplicants()" *ngIf="!showingDeletedApplicants" type="button">Show Rejected Applicants</button>
+    <button  class="button21-shrink button21"(click)="HideDeletedApplicants()" *ngIf="showingDeletedApplicants" type="button">Hide Rejected Applicants</button>
+
+    <button  class="button22-shrink button22"(click)="ShowShortlistedApplicants()" *ngIf="!showingShortlistedApplicants" type="button">Show Only Shortlisted Applicants</button>
+    <button  class="button22-shrink button22"(click)="HideShortlistedApplicants()" *ngIf="showingShortlistedApplicants" type="button">Show All Applicants</button>
+	
+	<br>
+	
+          
+    <table class="table-hover" data-role="table" data-mode=" columntoggle" id="myTable" data-filter="true" data-input="#filterTable-input">
+    
+      <thead>
+        <th class="left aligned">Name</th>
+        <th>Instruments</th>
+        <th>Languages</th>
+        <th>Hours</th>
+        <th>Date Applied</th>
+      </thead>
+        <tr *ngFor="let teacherApplication of filteredTeacherApplications" [ngClass]="{'rejected': teacherApplication.status == 3,'shortlisted': teacherApplication.shortlisted == true, 'applied': teacherApplication.status == 1}" (click)="SelectTeacherApplication(teacherApplication.id)">
+          <td class="left aligned">{{teacherApplication.firstname}} {{teacherApplication.lastname}}</td>
+          <td>{{teacherApplication.instruments}}</td>
+          <td>{{teacherApplication.languages}}</td>
+          <td>{{teacherApplication.hours}}</td>
+          <td>{{teacherApplication.dateapplied}}</td>
+        </tr>
+    </table>
+
+  
+
+</div>
+
+<p *ngIf="!FormIsAvailable()">You do not have access to this page.</p>

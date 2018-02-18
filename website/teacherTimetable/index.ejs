@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="/teacher/timetable/">
+  <% include ../shared/header.ejs %>
+  <script>var localPath = '/teacherTimetable/';</script>
+  <script src="/teacherTimetable/timetable.service.js"></script>
+  <script src="/teacherTimetable/lessonInfo.component.js"></script>
+  <script src="/teacherTimetable/mainTimetable.component.js"></script>
+  <script src="/teacherTimetable/timetable.component.js"></script>
+  <script src="/teacherTimetable/timetable.routing.js"></script>
+  <script src="/teacherTimetable/timetable.module.js"></script>
+  <script src="/teacherTimetable/timetable.main.js"></script>
+</head>
+<body>
+
+  <% include ../shared/nav.ejs %>
+
+  <teacher-timetable-app class="mainContainer"></teacher-timetable-app>
+</body>
+</html>

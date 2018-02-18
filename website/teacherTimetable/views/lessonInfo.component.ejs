@@ -1,0 +1,26 @@
+<p *ngIf="error" class="cardErrorMessage">{{error}}</p>
+
+<div class="ui card bigCard"
+	*ngIf="lesson">
+	<div class="content">
+	  <div class="cardHeader">
+	      {{lesson.first_name}} {{lesson.last_name}}
+	  </div>
+	  <div class="meta">
+	  	<div class="cardRowContainer"><div class="cardLeft">Instrument:</div> <div class="cardRight">{{lesson.instrument_type}}</div></div>
+	  	<div class="cardRowContainer"><div class="cardLeft">Student Grade:</div> <div class="cardRight">{{lesson.student_grade}}</div></div>
+	  	<div class="cardRowContainer"><div class="cardLeft">Day:</div> <div class="cardRight">{{dayConversion[lesson.lesson_day]}}</div></div>
+		<div class="cardRowContainer"><div class="cardLeft">Time Slot:</div> <div class="cardRight">{{ConvertToDisplayTime(lesson.start_time)}} - {{ConvertToDisplayTime(lesson.end_time)}}</div></div>
+		<div class="cardRowContainer"><div class="cardLeft">Period:</div> <div class="cardRight">{{lesson.year}}, Term {{lesson.term}}</div></div>
+	  </div>
+	  <div class="extra content">
+    		<div class="ui two buttons">
+    			<button class="button21" (click)="CancelLesson()">Cancel Lesson</button>
+			    <button class="button22 clickable" (click)="GoBack()">Go Back</button>
+			</div>
+    	</div>
+	</div>
+</div>
+<div *ngIf="!FormIsAvailable()">
+	<p>You must be a teacher of our school to view this page.</p>
+</div>

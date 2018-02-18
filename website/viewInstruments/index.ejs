@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="/management/instruments/">
+  <% include ../shared/header.ejs %>
+  <script>var localPath = '/viewInstruments/';</script>
+  <script src="/viewInstruments/viewInstruments.service.js"></script>
+  <script src="/viewInstruments/viewIndividualInstrument.component.js"></script>
+  <script src="/viewInstruments/viewAllInstruments.component.js"></script>
+  <script src="/viewInstruments/viewInstruments.component.js"></script>
+  <script src="/viewInstruments/viewInstruments.routing.js"></script>
+  <script src="/viewInstruments/viewInstruments.module.js"></script>
+  <script src="/viewInstruments/viewInstruments.main.js"></script>
+</head>
+<body>
+
+  <% include ../shared/nav.ejs %>
+
+  <view-instruments-app class="mainContainer"></view-instruments-app>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="/management/teacherApplications/">
+  <% include ../shared/header.ejs %>
+  <script>var localPath = '/viewTeacherApplications/';</script>
+  <script src="/viewTeacherApplications/viewTeacherApplications.service.js"></script>
+  <script src="/viewTeacherApplications/viewIndividualTeacherApplication.component.js"></script>
+  <script src="/viewTeacherApplications/viewAllTeacherApplications.component.js"></script>
+  <script src="/viewTeacherApplications/viewTeacherApplications.component.js"></script>
+  <script src="/viewTeacherApplications/viewTeacherApplications.routing.js"></script>
+  <script src="/viewTeacherApplications/viewTeacherApplications.module.js"></script>
+  <script src="/viewTeacherApplications/viewTeacherApplications.main.js"></script>
+</head>
+<body>
+
+  <% include ../shared/nav.ejs %>
+
+  <view-teacher-applications-app class="mainContainer"></view-teacher-applications-app>
+</body>
+</html>
