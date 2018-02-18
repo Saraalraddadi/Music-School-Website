@@ -1,0 +1,119 @@
+<div class="mainHeader">
+	{{title}}
+</div>
+
+<div class="mainBody">
+
+  <p *ngIf="error">{{error}}</p>
+
+  <div *ngIf="PageIsAvailable()">
+
+    <h3>Hired Instruments</h3>
+      <p *ngIf="hiredInstruments.length == 0">No Hired Instruments to display.</p>
+      <div class="ui cards" *ngIf="hiredInstruments.length">
+        <div class="card col-sm-3" *ngFor="let instrument of hiredInstruments">
+          <div class="content">
+            <div class="header">
+              <b>{{instrument.instrumentname}}</b>
+            </div>
+            <div class="meta">
+              Serial Number: {{instrument.serialnumber}}
+                <br>
+              Hire Fee: ${{instrument.hirefee}}
+                <br>
+              Condition: {{instrument.condition}}
+                <br>
+              Due Date: {{instrument.duedate}}
+            </div>
+          </div>
+          <div class="extra content" *ngIf="instrument.notes">
+            <div class="description">
+              {{instrument.notes}}
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <h3>Requested Instruments</h3>
+      <p *ngIf="requestedInstruments.length == 0">No Requested Instruments to display.</p>
+      <div class="ui cards" *ngIf="requestedInstruments.length">
+        <div class="card col-sm-3" *ngFor="let instrument of requestedInstruments">
+          <div class="content">
+            <div class="header">
+              <b>{{instrument.instrumentname}}</b>
+            </div>
+            <div class="meta">
+              Serial Number: {{instrument.serialnumber}}
+                <br>
+              Hire Fee: ${{instrument.hirefee}}
+                <br>
+              Condition: {{instrument.condition}}
+                <br>
+              Due Date: {{instrument.duedate}}
+            </div>
+          </div>
+          <div class="extra content" *ngIf="instrument.notes">
+            <div class="description">
+              {{instrument.notes}}
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <h3>Rejected Instruments</h3>
+      <p *ngIf="rejectedInstruments.length == 0">No Rejected Instruments to display.</p>
+      <div class="ui cards" *ngIf="rejectedInstruments.length">
+        <div class="card col-sm-3" *ngFor="let instrument of rejectedInstruments">
+          <div class="content">
+            <div class="header">
+              <b>{{instrument.instrumentname}}</b>
+            </div>
+            <div class="meta">
+              Serial Number: {{instrument.serialnumber}}
+                <br>
+              Hire Fee: ${{instrument.hirefee}}
+                <br>
+              Condition: {{instrument.condition}}
+                <br>
+              Due Date: {{instrument.duedate}}
+            </div>
+          </div>
+          <div class="extra content" *ngIf="instrument.notes">
+            <div class="description">
+              {{instrument.notes}}
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <h3>Previously Hired Instruments</h3>
+      <p *ngIf="previousInstruments.length == 0">No Previously Hired Instruments to display.</p>
+      <div class="ui cards" *ngIf="previousInstruments.length">
+        <div class="card col-sm-3" *ngFor="let instrument of previousInstruments">
+          <div class="content">
+            <div class="header">
+              <b>{{instrument.instrumentname}} {{instrument.instrumenttype}}</b>
+            </div>
+            <div class="meta">
+              Serial Number: {{instrument.serialnumber}}
+                <br>
+              Hire Fee: ${{instrument.hirefee}}
+                <br>
+              Condition: {{instrument.condition}}
+            </div>
+          </div>
+          <div class="extra content" *ngIf="instrument.notes">
+            <div class="description">
+              {{instrument.notes}}
+            </div>
+          </div>
+        </div>
+      </div>
+
+  </div>
+
+  <p *ngIf="!PageIsAvailable()">You do not have access to this page.</p>
+
+</div>
+
+        

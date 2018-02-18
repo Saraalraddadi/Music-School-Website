@@ -1,0 +1,31 @@
+<p *ngIf="error" class="cardErrorMessage">{{error}}</p>
+
+<div class="card bigCard" *ngIf="student && FormIsAvailable()">
+  <div class="content">
+    <div class="cardHeader">
+        {{student.firstname}} {{student.lastname}}
+    </div>
+    <div class="meta">
+      <div class="cardRowContainer"><div class="cardLeft">Age:</div> <div class="cardRight">{{student.dob}}</div></div>
+      <div class="cardRowContainer"><div class="cardLeft">Instrument:</div> <div class="cardRight">{{student.instrument}}</div></div>
+      <div class="cardRowContainer"><div class="cardLeft">Grade:</div> <div class="cardRight">{{student.grade}}</div></div>
+      <div class="cardRowContainer"><div class="cardLeft">Year:</div> <div class="cardRight">{{student.year}}</div></div>
+      <div class="cardRowContainer"><div class="cardLeft">Term:</div> <div class="cardRight">{{student.term}}</div></div>
+      <div class="cardRowContainer"><div class="cardLeft">Start Time:</div> <div class="cardRight">{{student.starttime}}</div></div>
+      <div class="cardRowContainer"><div class="cardLeft">End Time:</div> <div class="cardRight">{{student.endtime}}</div></div>
+      <div class="cardRowContainer"><div class="cardLeft">Fee:</div> <div class="cardRight">${{student.fee}}</div></div>
+      <div class="cardRowContainer"><div class="cardLeft">Notes:</div> <div *ngIf="student.notes != null" class="cardRight">{{student.notes}}</div>
+                                                                      <div *ngIf="student.notes == null" class="cardRight">N/A</div></div>
+    </div>
+  </div>
+  <div class="extra content">
+    <div class="ui two buttons">
+       <button class="button21 positive" (click)="AcceptStudent(student.requestid)">Approve</button>
+       <button class="button21" (click)="RejectStudent(student.requestid)">Decline</button>
+       <button class="button22 clickable" (click)="GoBack()">Go Back</button>
+    </div>
+  </div>
+</div>
+<div *ngIf="!FormIsAvailable()">
+  You do not have access to view this page.
+</div>

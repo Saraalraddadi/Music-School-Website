@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="/teacher/studentApplications/">
+  <% include ../shared/header.ejs %>
+  <script>var localPath = '/acceptStudents/';</script>
+  <script src="/acceptStudents/acceptStudents.service.js"></script>
+  <script src="/acceptStudents/viewIndividualStudent.component.js"></script>
+  <script src="/acceptStudents/viewAllStudents.component.js"></script>
+  <script src="/acceptStudents/acceptStudents.component.js"></script>
+  <script src="/acceptStudents/acceptStudents.routing.js"></script>
+  <script src="/acceptStudents/acceptStudents.module.js"></script>
+  <script src="/acceptStudents/acceptStudents.main.js"></script>
+</head>
+<body>
+
+  <% include ../shared/nav.ejs %>
+
+  <accept-students-app class="mainContainer"></accept-students-app>
+</body>
+</html>
