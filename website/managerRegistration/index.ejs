@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="/register/manager/">
+  <% include ../shared/header.ejs %>
+  <script>var localPath = '/managerRegistration/';</script>
+  <script src="/managerRegistration/manager.js"></script>
+  <script src="/managerRegistration/registration.service.js"></script>
+  <script src="/managerRegistration/registerConfirmation.component.js"></script>
+  <script src="/managerRegistration/registerForm.component.js"></script>
+  <script src="/managerRegistration/managerReg.component.js"></script>
+  <script src="/managerRegistration/managerReg.routing.js"></script>
+  <script src="/managerRegistration/managerReg.module.js"></script>
+  <script src="/managerRegistration/managerReg.main.js"></script>
+</head>
+<body>
+
+  <% include ../shared/nav.ejs %>
+
+  <manager-registration-app class="mainContainer"></manager-registration-app>
+</body>
+</html>

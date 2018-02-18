@@ -1,0 +1,70 @@
+<p *ngIf="loading">Professional Information Section is loading...</p>
+<p *ngIf="saving">Professional Information Section is saving...</p>
+<form class="col-sm-9" #professionalinfo="ngForm" method="POST"
+*ngIf="!loading && !saving">
+	<fieldset id="professionalinfo">
+		<legend>
+			<span>Professional Information</span>
+			<button
+			*ngIf="!editing"
+			(click)="enterEditingMode()"
+			>Edit</button>
+			<button 
+			class="positive"
+			*ngIf="editing"
+			(click)="saveChanges()"
+			>Save</button>
+			<button 
+			class="negative"
+			*ngIf="editing"
+			(click)="cancelEditing()"
+			>Cancel</button>
+		</legend>
+		<div class="RowContainer col-sm-12" *ngIf="editing">
+        	<div class="col-sm-6">
+        		<label for="instrumentTypeIds">Instruments:</label>
+		    	<select title="Hold Control or Command and click to select multiple"
+		    	id="instrumentTypeIds" name="instrumentTypeIds"
+		    	[(ngModel)]="skillsForm.skills.instruments"
+		    	#instrumentTypeIds="ngModel" multiple pattern="^([0-9]+,)*[0-9]+$"
+		    	[style.height]="allInstruments.length*20 + 5 + 'px'">
+			    	<option *ngFor="let instrument of allInstruments" value="{{instrument.id}}" [selected]="instIdIsSelected(instrument.id)">{{instrument.name}}</option>
+		    	</select>
+        	</div>
+        	<div class="col-sm-6">
+        	 	<label>Grades</label>
+	            <div *ngFor="let instrumentId of skillsForm.skills.instruments">
+	            	<div class="Left">{{allInstruments[instrumentId - 1].name}}:</div>
+	            	<input class="Right" type="text" pattern="[4-7]" name="{{allInstruments[instrumentId - 1].name}}Grade"
+	            	[(ngModel)]="skillsForm.skills.grades[instrumentId - 1]" required/>
+	            </div>
+	        </div>
+	    </div>
+	    <div class="RowContainer col-sm-12" *ngIf="!editing">
+    		<label for="instrumentTypeIds">Your Instrument Experience:</label>
+	    	<div class="RowContainer" *ngFor="let instrumentId of skillsForm.skills.instruments">
+	    		<div class="Left">{{allInstruments[instrumentId - 1].name}}: </div>
+	    		<input type="text" class="Right" value="Grade {{skillsForm.skills.grades[instrumentId - 1]}}" readonly/>
+	    	</div>
+	    </div>
+	    <div class="RowContainer col-sm-12" *ngIf="editing">
+        	<div class="col-sm-6">
+        		<label for="languageIds">Languages:</label>
+		    	<select title="Hold Control or Command and click to select multiple"
+		    	id="languageIds" name="languageIds"
+		    	[(ngModel)]="skillsForm.skills.languages"
+		    	#languageIds="ngModel" multiple pattern="^([0-9]+,)*[0-9]+$"
+		    	[style.height]="allLanguages.length*20 + 5 + 'px'">
+			    	<option *ngFor="let language of allLanguages" value="{{language.id}}" [selected]="langIdIsSelected(language.id)">{{language.language}}</option>
+		    	</select>
+        	</div>
+	    </div>
+	    <div class="RowContainer col-sm-12" *ngIf="!editing">
+    		<label for="languageIds">Known Languages:</label>
+	    	<div class="RowContainer" *ngFor="let languageId of skillsForm.skills.languages">
+	    		<div class="Left">{{allLanguages[languageId - 1].language}}</div>
+	    	</div>
+	    </div>
+	</fieldset>
+</form>
+<div style="clear: both"></div>

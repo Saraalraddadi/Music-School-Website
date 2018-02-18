@@ -1,0 +1,14 @@
+<div class="mainHeader">
+	{{title}}
+</div>
+
+<div class="mainBody" *ngIf="FormIsAvailable()">
+	<p *ngIf="error" class="errorMessage">{{error}}</p>
+	<my-portal-personal></my-portal-personal>
+	<my-portal-password></my-portal-password>
+	<my-portal-professional *ngIf="UserService.GetCurrentUser().type == 'teacher'"></my-portal-professional>
+</div>
+
+<div class="mainBody" *ngIf="!FormIsAvailable()">
+	<p>You must be logged in to view this page.</p>
+</div>

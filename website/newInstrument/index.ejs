@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="/management/instrument/new/">
+  <% include ../shared/header.ejs %>
+  <script>var localPath = '/newInstrument/';</script>
+  <script src="/newInstrument/instrument.js"></script>
+  <script src="/newInstrument/newInstrument.service.js"></script>
+  <script src="/newInstrument/newInstrumentConfirmation.component.js"></script>
+  <script src="/newInstrument/newInstrumentForm.component.js"></script>
+  <script src="/newInstrument/newInstrument.component.js"></script>
+  <script src="/newInstrument/newInstrument.routing.js"></script>
+  <script src="/newInstrument/newInstrument.module.js"></script>
+  <script src="/newInstrument/newInstrument.main.js"></script>
+</head>
+<body>
+
+  <% include ../shared/nav.ejs %>
+
+  <new-instrument-app class="mainContainer"></new-instrument-app>
+</body>
+</html>

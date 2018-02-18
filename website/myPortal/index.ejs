@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <% include ../shared/header.ejs %>
+  <script>var localPath = '/myPortal/';</script>
+  <script src="/myPortal/myportal.service.js"></script>
+  <script src="/myPortal/myportal.professional.component.js"></script>
+  <script src="/myPortal/myportal.password.component.js"></script>
+  <script src="/myPortal/myportal.personal.component.js"></script>
+  <script src="/myPortal/myportal.container.component.js"></script>
+  <script src="/myPortal/myportal.module.js"></script>
+  <script src="/myPortal/myportal.main.js"></script>
+</head>
+
+<body>
+
+  <% include ../shared/nav.ejs %>
+
+  <my-portal-container class="mainContainer"></my-portal-container>
+</body>
+</html>

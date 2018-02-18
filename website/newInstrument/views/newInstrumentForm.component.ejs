@@ -1,0 +1,84 @@
+<p *ngIf="error" class="errorMessage">{{error}}</p>
+<form *ngIf="FormIsAvailable()" [hidden]="submitted" (ngSubmit)="Add()" #newInstrumentForm="ngForm" method="POST">
+	<fieldset id="instrumentinfo"
+	[disabled]="conditionList.length == 0">
+    <legend><span>Instrument Information</span></legend>
+    <div class="row">
+		<div class="col-sm-6">
+			<label 	for="type">Type: </label>
+			<select id="type" name="type"
+					[(ngModel)]="instrument.type" #type="ngModel" required>
+				<option *ngFor="let type of typeList" value="{{type.id}}" required>{{type.name}}</option>
+				<option value="0" required>New</option>
+			</select>
+			<p class="errorMessage" [hidden]="(type.valid || type.untouched) && isValid.type">A Value must be selected.</p>
+		</div>
+		<div class="col-sm-6">
+			<label 	for="condition">Condition: </label>
+			<select id="condition" name="condition"
+					[(ngModel)]="instrument.condition" #condition="ngModel" required>
+				<option *ngFor="let condition of conditionList" value="{{condition.id}}" required>{{condition.condition}}</option>
+			</select>
+			<p class="errorMessage" [hidden]="(condition.valid || condition.untouched) && isValid.condition">A Value must be selected.</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-6">
+			<label 	for="serialNumber">Serial Number: </label>
+			<input 	type="serialNumber" id="serialNumber" name="serialNumber" #serialNumber="ngModel"
+					[(ngModel)]="instrument.serialNumber" pattern="^[A-Z0-9]+$" required/>
+			<p class="errorMessage" [hidden]="(serialNumber.valid || serialNumber.untouched) && isValid.serialNumber">Invalid input. Must be a valid serial number.</p>
+		</div>
+		<div class="col-sm-6">
+			<label 	for="purchasePrice">Purchase Price: </label>
+			<input 	type="text" id="purchasePrice" name="purchasePrice" #purchasePrice="ngModel"
+					[(ngModel)]="instrument.purchasePrice" pattern="^\$[0-9]+(.[0-9]{2})?$" required/>
+			<p class="errorMessage" [hidden]="(purchasePrice.valid || purchasePrice.untouched) && isValid.purchasePrice">Invalid input. Must be a number value starting with a $.</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-6">
+			<label 	for="hireFee">Hire Fee: </label>
+			<input 	type="text" id="hireFee" name="hireFee" #hireFee="ngModel"
+					[(ngModel)]="instrument.hireFee" pattern="^\$[0-9]+(.[0-9]{2})?$" required/>
+			<p class="errorMessage" [hidden]="(hireFee.valid || hireFee.untouched) && isValid.hireFee">Invalid input. Must be a number value starting with a $.</p>
+		</div>
+		<div class="col-sm-6">
+			<label 	for="purchaseDate">Purchase Date: </label>
+			<input 	title="dd/mm/yyyy" type="text" id="purchaseDate" class="datepicker" placeholder= "dd/mm/yyyy" name="purchaseDate" #purchaseDate="ngModel" [(ngModel)]="instrument.purchaseDate" 
+					pattern="^([0-2][0-9]|3[0-1])\/(0[1-9]|1[0-2])\/((19|20)[0-9]{2})$" 
+					autocomplete="off" required/>
+			<p class="errorMessage" [hidden]="(purchaseDate.valid || purchaseDate.untouched) && isValid.purchaseDate">Invalid input. Must be a valid date in the format dd/mm/yyyy.</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-6" *ngIf="instrument.type == '0'">
+			<label 	for="newInstType">Type Name: </label>
+			<input 	type="newInstType" id="newInstType" name="newInstType" #newInstType="ngModel"
+					[(ngModel)]="instrument.newInstType" pattern="^[A-Za-z ]+$" required/>
+			<p class="errorMessage" [hidden]="(type.valid || type.untouched) && isValid.type">A value must be entered.</p>
+		</div>
+		<div class="col-sm-6">
+			<label 	for="model">Model: </label>
+			<input 	type="text" id="model" name="model" #model="ngModel"
+					[(ngModel)]="instrument.model" pattern="^[A-Za-z0-9 ]+$" required/>
+			<p class="errorMessage" [hidden]="(model.valid || model.untouched) && isValid.model">Invalid input. Must be a number value starting with a $.</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12">
+			<label 	for="description">Description: </label>
+			<textarea id="description" name="description" #description="ngModel"
+					[(ngModel)]="instrument.description" pattern="^[A-Za-z0-9._%+-\s]*$" rows="5" required></textarea>
+			<p class="errorMessage" [hidden]="(description.valid || description.untouched) && isValid.description">Invalid input. Can only contain text.</p>
+		</div>
+	</div>
+	<div class="buttonContainer">
+		<button [disabled]="!newInstrumentForm.form.valid" type="Submit">Add</button>
+	</div>
+	</fieldset>
+</form>
+<div [hidden]="!submitted">
+	<p>Attempting to add new instrument...</p>
+</div>
+<p *ngIf="!FormIsAvailable()">You do not have access to this page.</p>

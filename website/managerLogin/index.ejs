@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="/login/manager/">
+  <% include ../shared/header.ejs %>
+  <script>var localPath = '/managerLogin/';</script>
+  <script src="/managerLogin/login.component.js"></script>
+  <script src="/managerLogin/loginApp.module.js"></script>
+  <script src="/managerLogin/loginApp.main.js"></script>
+</head>
+<body>
+
+  <% include ../shared/nav.ejs %>
+
+  <manager-login-app class="mainContainer"></manager-login-app>
+</body>
+</html>

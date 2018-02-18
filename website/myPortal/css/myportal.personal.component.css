@@ -1,0 +1,85 @@
+form .RowContainer {
+	clear: both;
+	float: none;
+}
+
+form .Left {
+	float: left;
+	text-align: right;
+	width: 10em;
+}
+
+form .Right {
+	float: left;
+	width: calc(100% - 10em);
+	text-align: left;
+	margin: 0;
+	padding: 0;
+	padding-left: 10px;
+	border: 1px solid rgb(200,200,200);
+	background: rgb(254,254,254);
+	margin-bottom: -1px;
+}
+
+form .Right[required] {
+    box-shadow:none;
+}
+
+form .Right.ng-valid, form .Left.ng-valid {
+    border-left: 2px solid rgb(70,200,70);
+}
+
+form .Right.ng-invalid, form .Left.ng-invalid {
+    border-left: 2px solid rgb(225,0,0);
+}
+
+form .Right[readonly] {
+	background: none;
+	border: none;
+}
+
+form .Right[disabled] {
+	background: none;
+	border: none;
+}
+
+select[disabled] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+}
+
+legend button {
+	margin: 0;
+	margin-right: 10px;
+	padding: 5px 10px;
+	box-shadow: 0px 0px 0px 1px #191970 inset !important;
+	color: #191970;
+	font-weight: 0;
+	float: right;
+}
+
+legend button.positive {
+	box-shadow: 0px 0px 0px 1px rgb(50,150,50) inset !important;
+	color: rgb(50,150,50);
+}
+
+legend button.negative {
+	box-shadow: 0px 0px 0px 1px #DB2828 inset !important;
+	color: #DB2828;
+}
+
+legend button:hover {
+  background: #191970;
+  color: #FFF;
+}
+
+legend button.positive:hover {
+  background: rgb(50,150,50);
+}
+
+legend button.negative:hover {
+  background: #DB2828;
+}
+
